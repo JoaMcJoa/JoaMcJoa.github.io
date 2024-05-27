@@ -317,12 +317,13 @@ topics = [
   "huishoudelike items",
   "klere",
   "werkwoorde",
-  "juweliersware"
+  "juweliersware",
 ];
 topicsSet = new Set(topics);
-topicsStr = "'maande', 'dae', 'seisoenne', 'maaltye', 'tye', 'kleure', 'familielede', 'kamers', 'meubles', 'toestelle', 'huishoudelike items', 'klere', 'werkwoorde' en 'juweliersware'";
+topicsStr =
+  "'maande', 'dae', 'seisoenne', 'maaltye', 'tye', 'kleure', 'familielede', 'kamers', 'meubles', 'toestelle', 'huishoudelike items', 'klere', 'werkwoorde' en 'juweliersware'";
 
-topicsDialog = "Die vakke wat ek ken is ... ".concat(topicsStr);
+topicsDialog = "Die vakke wat ek ken is ".concat(topicsStr);
 
 function test() {
   if (topicsSet.has("werkwoorde")) {
@@ -388,7 +389,7 @@ function next() {
       if (document.getElementById("studentAnswer").value == "werkwoorde") {
         tgtDict = werkwoordeDict;
       }
-      if (document.getElementById("studentAnswer").value == "werkwoorde") {
+      if (document.getElementById("studentAnswer").value == "juweliersware") {
         tgtDict = jewelleryDict;
       }
 
