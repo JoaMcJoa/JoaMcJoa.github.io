@@ -19,11 +19,13 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
     <title>My Cute Little Afrikaans Teacher</title>
+    <audio src="sad_theme.ogg" id="sad_theme" loop="loop"></audio>
   </head>
   <body>
     <dir class="window">
       <h1>My Cute Little Afrikaans Teacher</h1>
-      <img id="teacher" src="/teacher.png" alt="Cute Teacher" />
+      <p id="quCount">---</p>
+      <img id="teacher" src="/teacher.png" alt="Cute Teacher" onclick="stopMusic()"/>
       <p id="teacherDialog">
         Goeie dag! Ek sal vir jou 'n Engelse woord wys. Jy moet se wat dit in
         Afrikaans beteken. Is jy gereed? Vertel my wat jy wil leer?
@@ -33,22 +35,18 @@
         name="studentAnswer"
         id="studentAnswer"
         autocomplete="off"
-        autofocus="off"
       />
-      <button
-        class="button"
-        id="enterButton"
-        onclick="check()"
-        type="button"
-      >&nbsp;
+      <button class="button" id="enterButton" onclick="check()" type="button">
+        &nbsp;
       </button>
-      <button
-        class="button"
-        id="nextButton"
-        onclick="next()"
-        type="button"
-      >&nbsp;
+      <button class="button" id="nextButton" onclick="next()" type="button">
+        &nbsp;
       </button>
+      <audio src="enter.wav" id="enterSound"></audio>
+      <audio src="correct.wav" id="correctSound"></audio>
+      <audio src="wrong.wav" id="wrongSound"></audio>
+      <audio src="clapping.ogg" id="clappingSound"></audio>
+      <audio src="mewing.ogg" id="mewingSound"></audio>
     </dir>
   </body>
 </html>

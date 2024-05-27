@@ -325,10 +325,18 @@ topicsStr =
 
 topicsDialog = "Die vakke wat ek ken is ".concat(topicsStr);
 
-function test() {
-  if (topicsSet.has("werkwoorde")) {
-    document.getElementById("teacherDialog").innerHTML = topicsDialog;
-  }
+/* function test() {
+  document.getElementById("sad_theme").play();
+  document.getElementById("sad_theme").volume = 0.2;
+}*/
+
+window.onload = function () {
+  document.getElementById("sad_theme").play();
+  document.getElementById("sad_theme").volume = 0.2;
+};
+
+function stopMusic() {
+  document.getElementById("sad_theme").pause();
 }
 
 tgtDict = familyDict;
@@ -336,6 +344,9 @@ tgtDict = familyDict;
 let initialDialog = 0;
 let quNumber = 0;
 let answerGiven = 0;
+let quAsked = 0;
+let wrapUp = 0;
+let correctQu = 0;
 
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
@@ -350,93 +361,119 @@ function shuffleArray(array) {
 
 function next() {
   studentAnswer = document.getElementById("studentAnswer").value;
-  studentAnswer = studentAnswer.toLowerCase();
 
-  if (initialDialog == 0) {
-    if (topicsSet.has(studentAnswer)) {
-      if (document.getElementById("studentAnswer").value == "maande") {
-        tgtDict = monthsDict;
-      }
-      if (document.getElementById("studentAnswer").value == "dae") {
-        tgtDict = daysDict;
-      }
-      if (document.getElementById("studentAnswer").value == "seisoenne") {
-        tgtDict = seasonsDict;
-      }
-      if (document.getElementById("studentAnswer").value == "maaltye") {
-        tgtDict = mealsDict;
-      }
-      if (document.getElementById("studentAnswer").value == "tye") {
-        tgtDict = timesDict;
-      }
-      if (document.getElementById("studentAnswer").value == "kleure") {
-        tgtDict = coloursDict;
-      }
-      if (document.getElementById("studentAnswer").value == "meubles") {
-        tgtDict = furnitureDict;
-      }
-      if (document.getElementById("studentAnswer").value == "toestelle") {
-        tgtDict = appliancesDict;
-      }
-      if (
-        document.getElementById("studentAnswer").value == "huishoudelike items"
-      ) {
-        tgtDict = householdDict;
-      }
-      if (document.getElementById("studentAnswer").value == "klere") {
-        tgtDict = clothesDict;
-      }
-      if (document.getElementById("studentAnswer").value == "werkwoorde") {
-        tgtDict = werkwoordeDict;
-      }
-      if (document.getElementById("studentAnswer").value == "juweliersware") {
-        tgtDict = jewelleryDict;
-      }
+  if (quAsked < 10) {
+    if (initialDialog == 0) {
+      if (topicsSet.has(studentAnswer)) {
+        if (document.getElementById("studentAnswer").value == "maande") {
+          tgtDict = monthsDict;
+        }
+        if (document.getElementById("studentAnswer").value == "dae") {
+          tgtDict = daysDict;
+        }
+        if (document.getElementById("studentAnswer").value == "seisoenne") {
+          tgtDict = seasonsDict;
+        }
+        if (document.getElementById("studentAnswer").value == "maaltye") {
+          tgtDict = mealsDict;
+        }
+        if (document.getElementById("studentAnswer").value == "tye") {
+          tgtDict = timesDict;
+        }
+        if (document.getElementById("studentAnswer").value == "kleure") {
+          tgtDict = coloursDict;
+        }
+        if (document.getElementById("studentAnswer").value == "meubles") {
+          tgtDict = furnitureDict;
+        }
+        if (document.getElementById("studentAnswer").value == "toestelle") {
+          tgtDict = appliancesDict;
+        }
+        if (
+          document.getElementById("studentAnswer").value ==
+          "huishoudelike items"
+        ) {
+          tgtDict = householdDict;
+        }
+        if (document.getElementById("studentAnswer").value == "klere") {
+          tgtDict = clothesDict;
+        }
+        if (document.getElementById("studentAnswer").value == "werkwoorde") {
+          tgtDict = werkwoordeDict;
+        }
+        if (document.getElementById("studentAnswer").value == "juweliersware") {
+          tgtDict = jewelleryDict;
+        }
 
-      initialDialog += 1;
+        initialDialog += 1;
 
-      tgtKeys = Object.keys(tgtDict);
-      shuffleTgtArray = shuffleArray(tgtKeys);
+        tgtKeys = Object.keys(tgtDict);
+        shuffleTgtArray = shuffleArray(tgtKeys).slice(0, 10);
 
-      teacherQu = "Die Engelse word is '".concat(
-        shuffleTgtArray[quNumber],
-        "'. Wat beteken dit in Afrikaans?"
-      );
-      document.getElementById("teacherDialog").innerHTML = teacherQu;
+        teacherQu = "Die Engelse word is '".concat(
+          shuffleTgtArray[quNumber],
+          "'. Wat beteken dit in Afrikaans?"
+        );
+        document.getElementById("teacherDialog").innerHTML = teacherQu;
 
-      quNumber += 1;
-      answerGiven = 0;
-      document.getElementById("studentAnswer").value = "";
+        quNumber += 1;
+        answerGiven = 0;
+        document.getElementById("enterSound").play();
+        document.getElementById("enterSound").volume = 0.1;
+
+        document.getElementById("studentAnswer").value = "";
+      } else {
+        document.getElementById("teacherDialog").innerHTML = topicsDialog;
+        document.getElementById("studentAnswer").value = "";
+        document.getElementById("sad_theme").play();
+        document.getElementById("sad_theme").volume = 0.2;
+      }
     } else {
-      document.getElementById("teacherDialog").innerHTML = topicsDialog;
-      document.getElementById("studentAnswer").value = "";
+      if (answerGiven == 1) {
+        teacherQu = "Die Engelse word is ... '".concat(
+          shuffleTgtArray[quNumber],
+          "'"
+        );
+        document.getElementById("teacherDialog").innerHTML = teacherQu;
+
+        quNumber += 1;
+        document.getElementById("studentAnswer").value = "";
+
+        answerGiven = 0;
+        document.getElementById("enterSound").play();
+        document.getElementById("enterSound").volume = 0.1;
+      }
     }
+    document.getElementById("teacher").src = "teacher.png";
   } else {
-    if (answerGiven == 1) {
-      teacherQu = "Die Engelse word is ... '".concat(
-        shuffleTgtArray[quNumber],
-        "'"
-      );
-      document.getElementById("teacherDialog").innerHTML = teacherQu;
-
-      quNumber += 1;
-      document.getElementById("studentAnswer").value = "";
-
-      answerGiven = 0;
+    playerPerc = Math.round((correctQu / 10) * 1000) / 10;
+    percDialog = "Ons is klaar. Jou finale punt was ".concat(playerPerc, "%");
+    document.getElementById("teacherDialog").innerHTML = percDialog;
+    if (playerPerc > 50) {
+      document.getElementById("teacher").src = "happy_teacher.gif";
+      document.getElementById("clappingSound").play();
+      document.getElementById("clappingSound").volume = 0.2;
+    } else {
+      document.getElementById("teacher").src = "cry_teacher.gif";
+      document.getElementById("mewingSound").play();
+      document.getElementById("mewingSound").volume = 0.2;
     }
+    document.getElementById("quCount").innerHTML =
+      "*** Refresh the page to have another go! ***";
   }
-  document.getElementById("teacher").src = "teacher.png";
 }
 
 function check() {
   studentAnswer = document.getElementById("studentAnswer").value;
-  studentAnswer = studentAnswer.toLowerCase();
 
   if (studentAnswer != "") {
     if (answerGiven == 0) {
       correctAnswer = tgtDict[shuffleTgtArray[quNumber - 1]];
-
       if (studentAnswer == correctAnswer) {
+        quAsked += 1;
+        correctQu += 1;
+        document.getElementById("correctSound").play();
+        document.getElementById("correctSound").volume = 0.2;
         document.getElementById("teacher").src = "happy_teacher_once_off.gif";
         happyDialog = "Baaie mooi! Dit is reg. '".concat(
           correctAnswer,
@@ -447,6 +484,9 @@ function check() {
         document.getElementById("teacherDialog").innerHTML = happyDialog;
         document.getElementById("studentAnswer").value = "";
       } else {
+        quAsked += 1;
+        document.getElementById("wrongSound").play();
+        document.getElementById("wrongSound").volume = 0.2;
         document.getElementById("teacher").src = "sad_teacher_once_off.gif";
         sadDialog = "Jammer! Die antwoord was ... '".concat(
           correctAnswer,
@@ -456,7 +496,8 @@ function check() {
         document.getElementById("studentAnswer").value = "";
       }
     }
-
     answerGiven = 1;
+    score = "".concat(quAsked, "/10");
+    document.getElementById("quCount").innerHTML = score;
   }
 }
