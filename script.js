@@ -331,7 +331,7 @@ function test() {
   }
 }
 
-tgtDict = werkwoordeDict;
+tgtDict = familyDict;
 
 let initialDialog = 0;
 let quNumber = 0;
@@ -409,6 +409,7 @@ function next() {
       document.getElementById("studentAnswer").value = "";
     } else {
       document.getElementById("teacherDialog").innerHTML = topicsDialog;
+      document.getElementById("studentAnswer").value = "";
     }
   } else {
     if (answerGiven == 1) {
@@ -424,6 +425,7 @@ function next() {
       answerGiven = 0;
     }
   }
+  document.getElementById("teacher").src = "teacher.png";
 }
 
 function check() {
