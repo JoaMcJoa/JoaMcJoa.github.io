@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <title>My Cute Little Afrikaans Teacher</title>
+  </head>
+  <body>
+    <dir class="window">
+      <h1>My Cute Little Afrikaans Teacher</h1>
+      <img id="teacher" src="/teacher.png" alt="Cute Teacher" />
+      <p id="teacherDialog">
+        Goeie dag! Ek sal vir jou 'n Engelse woord wys. Jy moet se wat dit in
+        Afrikaans beteken. Is jy gereed? Vertel my wat jy wil leer?
+      </p>
+      <input
+        type="text"
+        name="studentAnswer"
+        id="studentAnswer"
+        autocomplete="off"
+        required
+        autofocus="off"
+        onchnange="document.getElementById('teacherDialog').innerHTML = 'yay!'"
+      />
+      <button
+        class="button"
+        id="enterButton"
+        onclick="check()"
+        type="button"
+      >
+        <i class="material-icons">check</i>
+      </button>
+      <button
+        class="button"
+        id="nextButton"
+        onclick="next()"
+        type="button"
+      >
+        <i class="material-icons">east</i>
+      </button>
+    </dir>
+  </body>
+</html>
