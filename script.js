@@ -315,12 +315,12 @@ topics = [
   "meubles",
   "toestelle",
   "huishoudelike items",
-  "kleure",
+  "klere",
   "werkwoorde",
   "juweliersware"
 ];
 topicsSet = new Set(topics);
-topicsStr = "'maande', 'dae', 'seisoenne', 'maaltye', 'tye', 'kleure', 'familielede', 'kamers', 'meubles', 'toestelle', 'huishoudelike items', 'kleure', 'werkwoorde' en 'juweliersware'";
+topicsStr = "'maande', 'dae', 'seisoenne', 'maaltye', 'tye', 'kleure', 'familielede', 'kamers', 'meubles', 'toestelle', 'huishoudelike items', 'klere', 'werkwoorde' en 'juweliersware'";
 
 topicsDialog = "Die vakke wat ek ken is ... ".concat(topicsStr);
 
@@ -349,6 +349,7 @@ function shuffleArray(array) {
 
 function next() {
   studentAnswer = document.getElementById("studentAnswer").value;
+  studentAnswer = studentAnswer.toLowerCase();
 
   if (initialDialog == 0) {
     if (topicsSet.has(studentAnswer)) {
@@ -381,7 +382,7 @@ function next() {
       ) {
         tgtDict = householdDict;
       }
-      if (document.getElementById("studentAnswer").value == "werkwoorde") {
+      if (document.getElementById("studentAnswer").value == "klere") {
         tgtDict = clothesDict;
       }
       if (document.getElementById("studentAnswer").value == "werkwoorde") {
@@ -426,11 +427,11 @@ function next() {
 
 function check() {
   studentAnswer = document.getElementById("studentAnswer").value;
+  studentAnswer = studentAnswer.toLowerCase();
 
   if (studentAnswer != "") {
     if (answerGiven == 0) {
       correctAnswer = tgtDict[shuffleTgtArray[quNumber - 1]];
-      studentAnswer = document.getElementById("studentAnswer").value;
 
       if (studentAnswer == correctAnswer) {
         document.getElementById("teacher").src = "happy_teacher_once_off.gif";
@@ -456,46 +457,3 @@ function check() {
     answerGiven = 1;
   }
 }
-
-/* const tgtKeys = Object.keys(tgtDict);
-const randomKey = tgtKeys[Math.floor(Math.random() * tgtKeys.length)]; */
-
-/* function before() {
-  document.getElementById("teacher").src = "teacher.png";
-  let englishWord = shuffleTgtArray[questionsAsked];
-  let answerWord = shuffleTgtArray[questionsAsked - 1];
-  let correctAnswer = tgtDict[answerWord];
-  let teacherQu = "'".concat(englishWord, "'");
-  document.getElementById("teacherDialog").innerHTML = teacherQu;
-  questionsAsked += 1;
-}
-
-questionsAsked = 0;
-
-function after() {
-  let englishWord = shuffleTgtArray[questionsAsked];
-  let answerWord = shuffleTgtArray[questionsAsked - 1];
-  let correctAnswer = tgtDict[answerWord];
-  let teacherQu = "'".concat(englishWord, "'");
-  document.getElementById("teacherDialog").innerHTML = teacherQu;
-  let studentAnswer = document.getElementById("studentAnswer").value;
-  if (studentAnswer == correctAnswer) {
-    document.getElementById("teacher").src = "happy_teacher_once_off.gif";
-    let happyDialog = "Baaie mooi! Dit is reg. '".concat(
-      correctAnswer,
-      "' beteken '",
-      answerWord,
-      "'"
-    );
-    document.getElementById("teacherDialog").innerHTML = happyDialog;
-    document.getElementById("teacherStudentDialog").reset();
-  } else {
-    document.getElementById("teacher").src = "sad_teacher.png";
-    let sadDialog = "Jammer! Die antwoord was ..... '".concat(
-      correctAnswer,
-      "'"
-    );
-    document.getElementById("teacherDialog").innerHTML = sadDialog;
-    document.getElementById("teacherStudentDialog").reset();
-  }
-} */
