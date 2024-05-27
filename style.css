@@ -47,12 +47,13 @@ input {
   color: black;
   background-color: white;
   font-family: "Press Start 2P", sans-serif;
-  font-size: x-small;
+  font-size: xx-small;
   border-style: solid;
   border-color: dimgrey;
   border-radius: 5px;
   border-width: 1px;
   height: 30px;
+  width: 150px;
 }
 
 .button {
@@ -63,15 +64,25 @@ input {
   border-color: dimgrey;
   border-radius: 50%;
   border-width: 1px;
-  width: 40px;
-  height: 40px;
-  margin-left: 15px;
+  width: 30px;
+  height: 30px;
+  margin-left: 2px;
   opacity: 0.5;
 }
 
-.button:hover {opacity: 1}
+.button:hover {opacity: 1.0}
 
 .button:active {
     background-color:  #b62e3e;
     transform: translateY(1px);
   }
+
+#enterButton{
+  background-size: 28px;
+  background-image: url(/check.png);
+}
+
+#nextButton{
+  background-size: 28px;
+  background-image: url(/next.png);
+}
