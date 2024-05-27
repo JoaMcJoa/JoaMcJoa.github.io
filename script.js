@@ -21,22 +21,10 @@ daysDict = {
   Thursday: "Donderdag",
   Friday: "Vrydag",
   Saturday: "Saterdag",
-};
-
-seasonsDict = {
   spring: "lente",
   summer: "sommer",
   autumn: "herfs",
   winter: "winter",
-};
-
-mealsDict = {
-  breakfast: "ontbyt",
-  lunch: "middagete",
-  dinner: "aandete",
-  "tea-time": "teetyd",
-  snack: "peuselhappie",
-  cocktails: "skemerkelkie",
 };
 
 timesDict = {
@@ -55,6 +43,12 @@ timesDict = {
   tomorrow: "more",
   yesterday: "gister",
   weekend: "naweek",
+  breakfast: "ontbyt",
+  lunch: "middagete",
+  dinner: "aandete",
+  "tea-time": "teetyd",
+  snack: "peuselhappie",
+  cocktails: "skemerkelkie",
 };
 
 coloursDict = {
@@ -301,13 +295,12 @@ jewelleryDict = {
   pearls: "perels",
   rings: "ringe",
   watch: "horlosie",
+  glasses: "brille",
 };
 
 topics = [
   "maande",
   "dae",
-  "seisoenne",
-  "maaltye",
   "tye",
   "kleure",
   "familielede",
@@ -321,7 +314,7 @@ topics = [
 ];
 topicsSet = new Set(topics);
 topicsStr =
-  "'maande', 'dae', 'seisoenne', 'maaltye', 'tye', 'kleure', 'familielede', 'kamers', 'meubles', 'toestelle', 'huishoudelike items', 'klere', 'werkwoorde' en 'juweliersware'";
+  "'maande', 'dae', 'tye', 'kleure', 'familielede', 'kamers', 'meubles', 'toestelle', 'huishoudelike items', 'klere', 'werkwoorde' en 'juweliersware'";
 
 topicsDialog = "Die vakke wat ek ken is ".concat(topicsStr);
 
@@ -367,42 +360,46 @@ function next() {
       if (topicsSet.has(studentAnswer)) {
         if (document.getElementById("studentAnswer").value == "maande") {
           tgtDict = monthsDict;
+
         }
         if (document.getElementById("studentAnswer").value == "dae") {
           tgtDict = daysDict;
-        }
-        if (document.getElementById("studentAnswer").value == "seisoenne") {
-          tgtDict = seasonsDict;
-        }
-        if (document.getElementById("studentAnswer").value == "maaltye") {
-          tgtDict = mealsDict;
+
         }
         if (document.getElementById("studentAnswer").value == "tye") {
           tgtDict = timesDict;
+
         }
         if (document.getElementById("studentAnswer").value == "kleure") {
           tgtDict = coloursDict;
+
         }
         if (document.getElementById("studentAnswer").value == "meubles") {
           tgtDict = furnitureDict;
+
         }
         if (document.getElementById("studentAnswer").value == "toestelle") {
           tgtDict = appliancesDict;
+
         }
         if (
           document.getElementById("studentAnswer").value ==
           "huishoudelike items"
         ) {
           tgtDict = householdDict;
+
         }
         if (document.getElementById("studentAnswer").value == "klere") {
           tgtDict = clothesDict;
+
         }
         if (document.getElementById("studentAnswer").value == "werkwoorde") {
           tgtDict = werkwoordeDict;
+
         }
         if (document.getElementById("studentAnswer").value == "juweliersware") {
           tgtDict = jewelleryDict;
+
         }
 
         initialDialog += 1;
