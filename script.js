@@ -456,7 +456,7 @@ function next() {
       document.getElementById("mewingSound").volume = 0.2;
     }
     document.getElementById("quCount").innerHTML =
-      "*** Refresh the page to have another go! ***";
+      "*** Refresh to try again! ***";
   }
 }
 
@@ -483,7 +483,7 @@ function check() {
       } else {
         quAsked += 1;
         document.getElementById("wrongSound").play();
-        document.getElementById("wrongSound").volume = 0.2;
+        document.getElementById("wrongSound").volume = 0.1;
         document.getElementById("teacher").src = "sad_teacher_once_off.gif";
         sadDialog = "Jammer! Die antwoord was ... '".concat(
           correctAnswer,
