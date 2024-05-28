@@ -1,26 +1,26 @@
 monthsDict = {
-  January: "Januarie",
-  February: "Februarie",
-  March: "Maart",
-  April: "April",
-  May: "Mei",
-  June: "Junie",
-  July: "Julie",
-  August: "Augustus",
-  September: "September",
-  October: "Oktober",
-  November: "November",
-  December: "Desember",
+  January: "januarie",
+  February: "februarie",
+  March: "maart",
+  April: "april",
+  May: "mei",
+  June: "junie",
+  July: "julie",
+  August: "augustus",
+  September: "september",
+  October: "oktober",
+  November: "november",
+  December: "desember",
 };
 
 daysDict = {
-  Sunday: "Sondag",
-  Monday: "Maandag",
-  Tuesday: "Dinsdag",
-  Wednesday: "Woensdag",
-  Thursday: "Donderdag",
-  Friday: "Vrydag",
-  Saturday: "Saterdag",
+  Sunday: "sondag",
+  Monday: "maandag",
+  Tuesday: "dinsdag",
+  Wednesday: "wensdag",
+  Thursday: "donderdag",
+  Friday: "vrydag",
+  Saturday: "saterdag",
   spring: "lente",
   summer: "sommer",
   autumn: "herfs",
@@ -316,17 +316,17 @@ topicsSet = new Set(topics);
 topicsStr =
   "'maande', 'dae', 'tye', 'kleure', 'familielede', 'kamers', 'meubles', 'toestelle', 'huishoudelike items', 'klere', 'werkwoorde' en 'juweliersware'";
 
-topicsDialog = "Die vakke wat ek ken is ".concat(topicsStr);
+topicsDialog = "Die vakke wat ek ken is ".concat(topicsStr, ". *** Tik my as jy wil hê die musiek moet stop! ***");
 
 /* function test() {
   document.getElementById("sad_theme").play();
   document.getElementById("sad_theme").volume = 0.2;
-}*/
+}
 
 window.onload = function () {
   document.getElementById("sad_theme").play();
   document.getElementById("sad_theme").volume = 0.2;
-};
+};*/
 
 function stopMusic() {
   document.getElementById("sad_theme").pause();
@@ -353,53 +353,43 @@ function shuffleArray(array) {
 }
 
 function next() {
-  studentAnswer = document.getElementById("studentAnswer").value;
+  studentAnswer = document
+    .getElementById("studentAnswer")
+    .value.toLowerCase()
+    .trim();
 
   if (quAsked < 10) {
     if (initialDialog == 0) {
       if (topicsSet.has(studentAnswer)) {
-        if (document.getElementById("studentAnswer").value == "maande") {
+        if (studentAnswer == "maande") {
           tgtDict = monthsDict;
-
         }
-        if (document.getElementById("studentAnswer").value == "dae") {
+        if (studentAnswer == "dae") {
           tgtDict = daysDict;
-
         }
-        if (document.getElementById("studentAnswer").value == "tye") {
+        if (studentAnswer == "tye") {
           tgtDict = timesDict;
-
         }
-        if (document.getElementById("studentAnswer").value == "kleure") {
+        if (studentAnswer == "kleure") {
           tgtDict = coloursDict;
-
         }
-        if (document.getElementById("studentAnswer").value == "meubles") {
+        if (studentAnswer == "meubles") {
           tgtDict = furnitureDict;
-
         }
-        if (document.getElementById("studentAnswer").value == "toestelle") {
+        if (studentAnswer == "toestelle") {
           tgtDict = appliancesDict;
-
         }
-        if (
-          document.getElementById("studentAnswer").value ==
-          "huishoudelike items"
-        ) {
+        if (studentAnswer == "huishoudelike items") {
           tgtDict = householdDict;
-
         }
-        if (document.getElementById("studentAnswer").value == "klere") {
+        if (studentAnswer == "klere") {
           tgtDict = clothesDict;
-
         }
-        if (document.getElementById("studentAnswer").value == "werkwoorde") {
+        if (studentAnswer == "werkwoorde") {
           tgtDict = werkwoordeDict;
-
         }
-        if (document.getElementById("studentAnswer").value == "juweliersware") {
+        if (studentAnswer == "juweliersware") {
           tgtDict = jewelleryDict;
-
         }
 
         initialDialog += 1;
@@ -461,7 +451,10 @@ function next() {
 }
 
 function check() {
-  studentAnswer = document.getElementById("studentAnswer").value;
+  studentAnswer = document
+    .getElementById("studentAnswer")
+    .value.toLowerCase()
+    .trim();
 
   if (studentAnswer != "") {
     if (answerGiven == 0) {
