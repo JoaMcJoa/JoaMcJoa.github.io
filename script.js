@@ -1,4 +1,88 @@
 let woorde = {
+  sinonieme: {
+    kar: "motor",
+    vrolik: "bly",
+    hartseer: "ongelukkig",
+    kwaad: "woedend",
+    ma: "moeder",
+    pa: "vader",
+    soet: "gehoorsaam",
+    werk: "beroep",
+    mooi: "pragtig",
+    groot: "enorm",
+    praat: "gesels",
+    maat: "vriend/vriendin",
+    gou: "vinnig",
+    maer: "skraal",
+    nors: "onvriendelik",
+    soms: "partykeer",
+    wonderlik: "fantasties",
+    amper: "byna",
+    gratis: "verniet",
+    puik: "uitstekend",
+    stout: "ongehoorsaam",
+    slim: "intelligent",
+    dominee: "predikant",
+    miskien: "dalk",
+    regte: "korrekte",
+    einde: "slot",
+    lawaai: "geraas",
+    massief: "enorm",
+    },
+  antonieme: {
+      vroeg: "laat",
+      ryk: "arm",
+      arm:"koud",
+      ver: "naby",
+      wen: "verloor",
+      hoog: "laag",
+      dag: "nag",
+      oop: "toe",
+      onder: "bo",
+      vuil:"skoon",
+      hard: "sag",
+      agter: "voor",
+      in: "uit",
+      gaar: "rou",
+      dik: "dun",
+      klein: "groot",
+      lig_bright: "donker",
+      lig_light: "swaar",
+      lag: "huil",
+      op: "af",
+      aan: "af",
+      los: "vas",
+      mooi: "lelik",
+      baie: "min",
+      goed:"sleg",
+      lank: "kort",
+      soet: "stout",
+      helder: "dof",
+      eerste: "laaste",
+      minste: "meeste",
+      waar:"onwaar",
+      gesond: "siek",
+      binne: "buite",
+      leeg: "vol",
+      skerp: "stomp",
+      yskoud: "vuurwarm",
+      boontoe: "ondertoe",
+      mak:"wild",
+      lekker: "sleg",
+      vinnig: "stadig",
+      heel: "stukkend",
+      netjies: "slordig",
+      maklik: "moeilik",
+      oud: "nuut",
+      manlik:"vroulik",
+      somer: "winter",
+      nat: "droog",
+      welkom: "onwelkom",
+      skuldig: "onskuldig",
+      vriendelik: "onvriendelik",
+      gelukkig: "ongelukkig",
+      smal: "breed"
+      },
   maande: {
     january: "januarie",
     february: "februarie",
@@ -347,7 +431,7 @@ function next() {
         tgtKeys = Object.keys(tgtDict);
         shuffleTgtArray = shuffleArray(tgtKeys).slice(0, 10);
 
-        teacherQu = "Die Engelse word is '".concat(
+        teacherQu = "Die word is '".concat(
           shuffleTgtArray[quNumber],
           "'. Wat beteken dit in Afrikaans?"
         );
@@ -367,7 +451,7 @@ function next() {
       }
     } else {
       if (answerGiven == 1) {
-        teacherQu = "Die Engelse word is ... '".concat(
+        teacherQu = "Die word is ... '".concat(
           shuffleTgtArray[quNumber],
           "'"
         );
@@ -416,10 +500,7 @@ function check() {
         document.getElementById("correctSound").volume = 0.2;
         document.getElementById("teacher").src = "happy_teacher_once_off.gif";
         happyDialog = "Baaie mooi! Dit is reg. '".concat(
-          correctAnswer,
-          "' beteken '",
-          shuffleTgtArray[quNumber - 1],
-          "' in Engels. Kom ons probeer 'n nogge vraag."
+        "Kom ons probeer 'n nogge vraag."
         );
         document.getElementById("teacherDialog").innerHTML = happyDialog;
         document.getElementById("studentAnswer").value = "";
