@@ -433,7 +433,7 @@ function next() {
 
         teacherQu = "Die word is '".concat(
           shuffleTgtArray[quNumber],
-          "'. Wat beteken dit in Afrikaans?"
+          "'. Wat is die antwoord?"
         );
         document.getElementById("teacherDialog").innerHTML = teacherQu;
 
